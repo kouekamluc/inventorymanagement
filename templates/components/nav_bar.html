@@ -1,0 +1,36 @@
+
+{% load static %}
+
+<nav class="top-nav">
+    <div class="nav-left">
+        <a href="{% url 'dashboard' %}" class="nav-logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img">
+            <span class="logo-text">StockMaster</span>
+        </a>
+    </div>
+    <div class="nav-center">
+        <form class="search-form" action="{% url 'inventory_list' %}" method="get">
+            <input type="text" name="search" placeholder="Search inventory..." value="{{ request.GET.search }}">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <div class="nav-right">
+        {% if user.is_authenticated %}
+            <div class="user-menu">
+                <button class="user-menu-btn">
+                    <img src="{% static 'images/default-avatar.png' %}" alt="User Avatar" class="user-avatar">
+                    <span>{{ user.username }}</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="user-dropdown">
+                    <a href="{% url 'user_profile' %}"><i class="fas fa-user"></i> Profile</a>
+                    <a href="{% url 'account_change_password' %}"><i class="fas fa-key"></i> Change Password</a>
+                    <a href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <a href="{% url 'account_login' %}" class="nav-btn">Login</a>
+            <a href="{% url 'account_signup' %}" class="nav-btn">Sign Up</a>
+        {% endif %}
+    </div>
+</nav>

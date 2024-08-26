@@ -1,0 +1,81 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inventory Management System{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/daily-dev-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+       <div class="main-content">
+
+            <header class="header">
+                <!-- Add header content here -->
+                {% include "components/nav_bar.html" %}
+
+            </header>
+               
+
+             <div class="container">
+
+           
+                        <aside class="sidebar">
+                            <!-- Add sidebar navigation items here -->
+
+                            <nav class="side-nav">
+                                <div class="logo">
+                                    <h1>K-Store</h1>
+                                </div>
+                                <ul class="nav-links">
+                                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                    <li><a href="{% url 'inventory_list' %}">Inventory</a></li>
+                                    <li><a href="#">Orders</a></li>
+                                    <li><a href="#">Customers</a></li>
+                                    <li><a href="#">Reports</a></li>
+                                </ul>
+                            </nav>
+                        </aside>
+
+                        <main class="main-content">
+
+                            {% if messages %}
+                            <div class="messages">
+                                {% for message in messages %}
+                                <div class="message {{ message.tags }}">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {% block content %}
+                            {% endblock %}
+                        </main>
+            <!-- 
+                    <aside class="profile-sidebar">
+                        {% if user.is_authenticated %}
+                            {% include "user_management/user_profile_snippet.html" %}
+                        {% else %}
+                            <div class="card">
+                                <h2>Welcome!</h2>
+                                <p>Log in to see your profile.</p>
+                            </div>
+                        {% endif %}
+                    </aside>
+                    -->
+            </div>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

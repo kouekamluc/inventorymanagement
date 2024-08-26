@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Adjust Inventory - {{ object.name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="inventory-container">
+    <h1>Adjust Inventory: {{ object.name }}</h1>
+    
+    <div class="item-details">
+        <p><strong>Current Quantity:</strong> {{ object.quantity }}</p>
+        <p><strong>Unit Price:</strong> ${{ object.unit_price }}</p>
+    </div>
+    
+    <form method="post" class="adjustment-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_amount">Amount:</label>
+            <input type="number" id="id_amount" name="amount" min="1" required>
+        </div>
+        <div class="form-group">
+            <label>Action:</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="action" value="add" required> Add
+                </label>
+                <label>
+                    <input type="radio" name="action" value="remove" required> Remove
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Adjust Inventory</button>
+        <a href="{% url 'inventory_detail' object.pk %}" class="btn">Cancel</a>
+    </form>
+</div>
+{% endblock %}

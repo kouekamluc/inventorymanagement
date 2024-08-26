@@ -1,0 +1,145 @@
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background-color: #3a3a3a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: #ffffff;
+    margin-right: 20px;
+}
+
+.profile-header h1 {
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.profile-card {
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-card h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3a3a3a;
+    padding-bottom: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 14px;
+    color: #a0a0a0;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.edit-profile-btn, .save-profile-btn {
+    display: inline-block;
+    background-color: #3a3a3a;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn:hover, .save-profile-btn:hover {
+    background-color: #4a4a4a;
+}
+
+.profile-form .profile-card {
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item label {
+    font-size: 14px;
+    color: #a0a0a0;
+    margin-bottom: 5px;
+}
+
+.form-item input,
+.form-item select,
+.form-item textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+.form-item textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Add focus styles for form elements */
+.form-item input:focus,
+.form-item select:focus,
+.form-item textarea:focus {
+    outline: none;
+    border-color: #4a4a4a;
+    box-shadow: 0 0 0 2px rgba(74, 74, 74, 0.2);
+}
+.date-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

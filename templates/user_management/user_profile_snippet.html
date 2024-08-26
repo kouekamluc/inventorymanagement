@@ -1,0 +1,32 @@
+
+<div class="profile-card">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            {{ user.username.0|upper }}
+        </div>
+    </div>
+    <div class="profile-info">
+        <h2 class="profile-name">{{ user.get_full_name|default:user.username }}</h2>
+        <p class="profile-username">@{{ user.username }} • Joined {{ user.date_joined|date:"F Y" }}</p>
+        <div class="profile-details">
+            <p><strong>Bio:</strong> {{ user.userprofile.bio|truncatewords:20|default:"Not provided" }}</p>
+            <p><strong>Location:</strong> {{ user.userprofile.location|default:"Not specified" }}</p>
+            <p><strong>Birth Date:</strong> {{ user.userprofile.birth_date|date:"F d, Y"|default:"Not specified" }}</p>
+        </div>
+        <div class="profile-stats">
+            <div class="stat">
+                <span class="stat-value">{{ user.userprofile.department|default:"N/A" }}</span>
+                <span class="stat-label">Department</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">{{ user.userprofile.employee_id|default:"N/A" }}</span>
+                <span class="stat-label">Employee ID</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">{{ user.userprofile.items_managed }}</span>
+                <span class="stat-label">Items Managed</span>
+            </div>
+        </div>
+        <a href="{% url 'user_profile_edit' %}" class="edit-profile-btn">Edit Profile</a>
+    </div>
+</div>

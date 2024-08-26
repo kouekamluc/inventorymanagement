@@ -1,0 +1,75 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1>Edit Profile</h1>
+    
+    <form method="post" class="profile-form">
+        {% csrf_token %}
+        
+        <div class="profile-card">
+            <h2>Personal Information</h2>
+            <div class="form-grid">
+                <div class="form-item">
+                    <label for="id_first_name">First Name</label>
+                    <input type="text" name="first_name" id="id_first_name" value="{{ user.first_name }}">
+                </div>
+                <div class="form-item">
+                    <label for="id_last_name">Last Name</label>
+                    <input type="text" name="last_name" id="id_last_name" value="{{ user.last_name }}">
+                </div>
+                <div class="form-item">
+                    <label for="id_email">Email</label>
+                    <input type="email" name="email" id="id_email" value="{{ user.email }}">
+                </div>
+                <div class="form-item">
+                    <label for="id_location">Location</label>
+                    <input type="text" name="location" id="id_location" value="{{ user.userprofile.location }}">
+                </div>
+                <div class="form-item">
+                    <label for="id_birth_date">Birth Date</label>
+                    <input type="date" name="birth_date" id="id_birth_date" value="{{ user.userprofile.birth_date|date:'Y-m-d' }}" class="date-input">
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <h2>Work Information</h2>
+            <div class="form-grid">
+                <div class="form-item">
+                    <label for="id_department">Department</label>
+                    <input type="text" name="department" id="id_department" value="{{ user.userprofile.department }}">
+                </div>
+                <div class="form-item">
+                    <label for="id_employee_id">Employee ID</label>
+                    <input type="text" name="employee_id" id="id_employee_id" value="{{ user.userprofile.employee_id }}">
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <h2>Bio</h2>
+            <div class="form-item">
+                <label for="id_bio">Bio</label>
+                <textarea name="bio" id="id_bio">{{ user.userprofile.bio }}</textarea>
+            </div>
+        </div>
+        
+        <button type="submit" class="save-profile-btn">Save Changes</button>
+    </form>
+    
+    <div class="profile-card">
+        <h2>Password</h2>
+        <p>Want to change your password? Click the button below:</p>
+        <a href="{% url 'custom_password_change' %}" class="change-password-btn">Change Password</a>
+    </div>
+</div>
+{% endblock %}

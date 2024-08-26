@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ item.name }} - Detail{% endblock %}
+
+{% block content %}
+<div class="inventory-container">
+    <h1>{{ item.name }}</h1>
+    
+    <div class="item-details">
+        <p><strong>Description:</strong> {{ item.description }}</p>
+        <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+        <p><strong>Unit Price:</strong> ${{ item.unit_price }}</p>
+        <p><strong>Category:</strong> {{ item.category }}</p>
+        <p><strong>Date Added:</strong> {{ item.date_added }}</p>
+        <p><strong>Last Updated:</strong> {{ item.last_updated }}</p>
+        <p><strong>Managed By:</strong> {{ item.managed_by }}</p>
+    </div>
+    
+    <div class="item-actions">
+        <a href="{% url 'inventory_update' item.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'inventory_delete' item.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'inventory_list' %}" class="btn">Back to List</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1>Edit Profile</h1>
+    
+    <form method="post" class="profile-form">
+        {% csrf_token %}
+        
+        <div class="profile-card">
+            <h2>Personal Information</h2>
+            <div class="form-grid">
+                <div class="form-item">
+                    <label for="{{ form.first_name.id_for_label }}">First Name</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-item">
+                    <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="form-item">
+                    <label for="{{ form.email.id_for_label }}">Email</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-item">
+                    <label for="{{ form.location.id_for_label }}">Location</label>
+                    {{ form.location }}
+                </div>
+                <div class="form-item">
+                    <label for="{{ form.birth_date.id_for_label }}">Birth Date</label>
+                    <input type="date" name="{{ form.birth_date.name }}" id="{{ form.birth_date.id_for_label }}"
+                           value="{{ form.birth_date.value|date:'Y-m-d' }}" class="date-input">
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <h2>Work Information</h2>
+            <div class="form-grid">
+                <div class="form-item">
+                    <label for="{{ form.department.id_for_label }}">Department</label>
+                    {{ form.department }}
+                </div>
+                <div class="form-item">
+                    <label for="{{ form.employee_id.id_for_label }}">Employee ID</label>
+                    {{ form.employee_id }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <h2>Bio</h2>
+            <div class="form-item">
+                <label for="{{ form.bio.id_for_label }}">Bio</label>
+                {{ form.bio }}
+            </div>
+        </div>
+        
+        <button type="submit" class="save-profile-btn">Save Changes</button>
+    </form>
+    
+    <div class="profile-card">
+        <h2>Password</h2>
+        <p>Want to change your password? Click the button below:</p>
+        <a href="{% url 'account_change_password' %}" class="change-password-btn">Change Password</a>
+    </div>
+</div>
+{% endblock %}
